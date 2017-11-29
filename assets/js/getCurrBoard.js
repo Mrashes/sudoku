@@ -1,5 +1,5 @@
 function getCurrBoard () {
-    return document.getElementById('board')
+    return document.getElementById('board').children
 }
 
 module.exports = getCurrBoard;

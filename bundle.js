@@ -92,7 +92,7 @@ module.exports = fillBoard;
 /***/ (function(module, exports) {
 
 function getCurrBoard () {
-    return document.getElementById('board')
+    return document.getElementById('board').children
 }
 
 module.exports = getCurrBoard;
