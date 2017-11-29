@@ -1,4 +1,23 @@
 .container {
+    width: 300px;
     display:grid;
-    
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    border: solid black 1px;
+    box-shadow: -5px 10px 10px gray;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: 33px 33px 33px;
+    border: solid black 1px;
+    /* box-sizing: border-box; */
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    border: solid gray .5px;
 }
