@@ -23,6 +23,6 @@ test('check array not undefined', () => {
     expect(createRowArray(board)).toBeDefined()
 });
 
-test('to have 9 nodes', () => {
-    expect(createRowArray(board)).toBe()
-});
+// test('to have 9 nodes', () => {
+//     expect(createRowArray(board)).toBe()
+// });
