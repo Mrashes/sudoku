@@ -68,8 +68,13 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var fillBoard = __webpack_require__(1)
+var getCurrBoard = __webpack_require__(2)
+var createRowArray = __webpack_require__(3)
 
-fillBoard()
+
+var results = getCurrBoard()
+createRowArray(results)
+// fillBoard()
 
 /***/ }),
 /* 1 */
@@ -96,6 +101,20 @@ function getCurrBoard () {
 }
 
 module.exports = getCurrBoard;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+function createRowArray (board) {
+    var rowArrays = []
+    for (i=0; i<board.length; i++){
+        rowArrays.push(board[i].children)
+    }
+    return(rowArrays)
+}
+
+module.exports = createRowArray;
 
 /***/ })
 /******/ ]);
