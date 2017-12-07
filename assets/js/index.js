@@ -1,19 +1,15 @@
-// var fillBoard = require("./fillBoard.js")
 var getCurrBoard = require('./getCurrBoard.js')
-var createSquareArray = require('./createSquareArray.js')
-var getColumnsNodes = require('./getColumnsNodes.js')
+var fillBoard = require("./fillBoard.js")
+var getColumnNodes = require("./getNodes/getColumnsNodes")
+var solve = require("./solve/solve")
 
-var getText = require('./getText.js')
+// solve()
+fillBoard().then(res => {
+        // solve()
+        // var results = getCurrBoard()
+        // var colNodes = getColumnNodes(results)
+        // solve(colNodes).then(res=>console.log(res));
+    }
+)
 
-var solveSquare = require('./solveSquare.js')
-
-
-var results = getCurrBoard()
-var nodeList = createSquareArray(results)
-var answer = getText(nodeList)
-console.log(solveSquare(answer))
-
-// var answer = solveSquare(nodeList)
-
-
-// fillBoard()
+document.getElementById('solve').addEventListener("click", solve);

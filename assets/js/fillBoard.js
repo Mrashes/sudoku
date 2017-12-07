@@ -1,11 +1,20 @@
 var getCurrBoard = require('./getCurrBoard.js')
+var getColumnsNodes = require('./getNodes/getColumnsNodes.js')
+var rightArray = require('./solvedBoard.js')
 
 function fillBoard () {
-    const board = getCurrBoard()
-    // console.log(board)
-    board.children.map(node => {
-        console.log(node.children.textcontent)
-    })
+    return new Promise (
+        function(resolve, reject) {
+            var board = getCurrBoard()
+            var nodeArray = getColumnsNodes(board)
+            for (i=0; i<nodeArray.length; i++) {
+                var dummyArray = [];
+                for(j=0; j<nodeArray[i].length; j++){
+                    nodeArray[i][j].innerText = rightArray[i][j]
+                }
+            }
+            resolve(true)
+        })
 }
 
 module.exports = fillBoard;

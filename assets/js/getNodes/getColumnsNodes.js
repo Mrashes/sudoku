@@ -1,10 +1,13 @@
 function getColumnsNodes (board) {
-    var testArray = []
+    var array = []
     for (i=0; i<board.length; i++) {
         var cellList = document.getElementsByClassName('col'+(i+1))
-        testArray.push(cellList)
+        array.push(cellList)
     }
-    return testArray
+    // console.log(array)
+    return array
 }
+
+// export {getColumnsNodes};
 
 module.exports = getColumnsNodes;
