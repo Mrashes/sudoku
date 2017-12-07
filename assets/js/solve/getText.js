@@ -5,9 +5,12 @@ function getText (nodeArray) {
     for (i=0; i<nodeArray.length; i++) {
         var dummyArray = [];
         for(j=0; j<nodeArray[i].length; j++){
-            // inputCheck()
-            console.log(nodeArray[i])
-            dummyArray.push(nodeArray[i][j].innerText)
+            if (nodeArray[i][j].children.length){
+                dummyArray.push(nodeArray[i][j].children[0].value)
+            }
+            else {
+                dummyArray.push(nodeArray[i][j].innerText)
+            }
         }
         textArray.push(dummyArray)
     }

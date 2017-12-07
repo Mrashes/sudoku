@@ -178,9 +178,12 @@ function getText (nodeArray) {
     for (i=0; i<nodeArray.length; i++) {
         var dummyArray = [];
         for(j=0; j<nodeArray[i].length; j++){
-            // inputCheck()
-            console.log(nodeArray[i])
-            dummyArray.push(nodeArray[i][j].innerText)
+            if (nodeArray[i][j].children.length){
+                dummyArray.push(nodeArray[i][j].children[0].value)
+            }
+            else {
+                dummyArray.push(nodeArray[i][j].innerText)
+            }
         }
         textArray.push(dummyArray)
     }
@@ -337,14 +340,14 @@ module.exports = fillBoard;
 /***/ (function(module, exports) {
 
 module.exports = [
-    [4,3,5,2,6,0,7,8,1],
-    [6,8,2,5,7,1,4,0,3],
-    [1,0,7,8,3,4,5,6,2],
+    [0,3,0,0,6,0,7,0,1],
+    [6,8,2,0,7,1,4,0,3],
+    [1,0,7,0,3,4,0,6,2],
     [8,2,6,1,0,5,3,4,7],
-    [3,7,4,6,8,2,0,1,5],
-    [0,5,1,7,4,3,6,2,8],
-    [5,1,0,3,2,6,8,7,4],
-    [2,4,8,0,5,7,1,3,6],
+    [0,0,0,0,0,0,0,0,0],
+    [0,5,1,0,4,3,6,2,8],
+    [5,1,0,0,2,6,8,7,4],
+    [2,4,8,0,0,7,1,3,6],
     [7,6,3,4,1,8,2,5,0],
 ]
 
@@ -355,8 +358,14 @@ module.exports = [
 function createInput (nodeLocation) {
     nodeLocation.textContent = ""
     var newNode = document.createElement("input");
-    newNode.className = "numberInput cell"
-    newNode.type = "text"
+    newNode.className = "numberInput"
+    newNode.setAttribute('min',1)
+    newNode.setAttribute('max',9)
+    newNode.type = "number"
+    
+    //TODO remove this later
+    // newNode.value = "1"
+
     nodeLocation.appendChild(newNode)
     return
 }
