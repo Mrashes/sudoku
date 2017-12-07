@@ -1,4 +1,4 @@
-var createRowArray = require('../assets/js/createRowArray.js')
+var getRowNodes = require('../assets/js/getNodes/getRowNodes.js')
 var getCurrBoard = require('../assets/js/getCurrBoard.js')
 
 // Set up our document body
@@ -20,9 +20,5 @@ document.body.innerHTML =
 var board = getCurrBoard()
 
 test('check array not undefined', () => {
-    expect(createRowArray(board)).toBeDefined()
+    expect(getRowNodes(board)).toBeDefined()
 });
-
-// test('to have 9 nodes', () => {
-//     expect(createRowArray(board)).toBe()
-// });

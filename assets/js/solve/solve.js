@@ -2,7 +2,6 @@ var getText = require('./getText.js');
 var extractArrays = require('./extractArrays.js');
 var getCurrBoard = require('../getCurrBoard.js')
 var getAllNodes = require('../getNodes/getAllNodes')
-var getText = require('./getText.js')
 
 
 function solve () {

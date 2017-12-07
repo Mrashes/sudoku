@@ -1,5 +1,5 @@
 var getCurrBoard = require('./getCurrBoard.js')
-var fillBoard = require("./fillBoard.js")
+var fillBoard = require("./fillBoard/fillBoard.js")
 var getColumnNodes = require("./getNodes/getColumnsNodes")
 var solve = require("./solve/solve")
 

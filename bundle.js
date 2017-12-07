@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var getCurrBoard = __webpack_require__(3)
-var fillBoard = __webpack_require__(10)
+var fillBoard = __webpack_require__(21)
 var getColumnNodes = __webpack_require__(1)
 var solve = __webpack_require__(12)
 
@@ -119,47 +119,8 @@ module.exports = getCurrBoard;
 /* 6 */,
 /* 7 */,
 /* 8 */,
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = [
-    [4,3,5,2,6,9,7,8,1],
-    [6,8,2,5,7,1,4,9,3],
-    [1,9,7,8,3,4,5,6,2],
-    [8,2,6,1,9,5,3,4,7],
-    [3,7,4,6,8,2,9,1,5],
-    [9,5,1,7,4,3,6,2,8],
-    [5,1,9,3,2,6,8,7,4],
-    [2,4,8,9,5,7,1,3,6],
-    [7,6,3,4,1,8,2,5,9],
-]
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getCurrBoard = __webpack_require__(3)
-var getColumnsNodes = __webpack_require__(1)
-var rightArray = __webpack_require__(9)
-
-function fillBoard () {
-    return new Promise (
-        function(resolve, reject) {
-            var board = getCurrBoard()
-            var nodeArray = getColumnsNodes(board)
-            for (i=0; i<nodeArray.length; i++) {
-                var dummyArray = [];
-                for(j=0; j<nodeArray[i].length; j++){
-                    nodeArray[i][j].innerText = rightArray[i][j]
-                }
-            }
-            resolve(true)
-        })
-}
-
-module.exports = fillBoard;
-
-/***/ }),
+/* 9 */,
+/* 10 */,
 /* 11 */
 /***/ (function(module, exports) {
 
@@ -181,7 +142,6 @@ var getText = __webpack_require__(13);
 var extractArrays = __webpack_require__(14);
 var getCurrBoard = __webpack_require__(3)
 var getAllNodes = __webpack_require__(17)
-var getText = __webpack_require__(13)
 
 
 function solve () {
@@ -211,11 +171,15 @@ module.exports = solve;
 /* 13 */
 /***/ (function(module, exports) {
 
+// var inputCheck = require('../verify/inputCheck.js')
+
 function getText (nodeArray) {
     var textArray = []
     for (i=0; i<nodeArray.length; i++) {
         var dummyArray = [];
         for(j=0; j<nodeArray[i].length; j++){
+            // inputCheck()
+            console.log(nodeArray[i])
             dummyArray.push(nodeArray[i][j].innerText)
         }
         textArray.push(dummyArray)
@@ -305,9 +269,11 @@ module.exports = solveArray;
 var getColumn = __webpack_require__(1)
 var getRow = __webpack_require__(18)
 var getSquare = __webpack_require__(11)
+// var varifyBoard = require('./verify/verifyBoard')
 
 function getAll (board) {
     var allThree = []
+    // verifyBoard()
     allThree.push(getColumn(board))
     allThree.push(getRow(board))
     allThree.push(getSquare(board))
@@ -331,6 +297,71 @@ function getRowNodes (board) {
 
 module.exports = getRowNodes;
 
+
+/***/ }),
+/* 19 */,
+/* 20 */,
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getCurrBoard = __webpack_require__(3)
+var getColumnsNodes = __webpack_require__(1)
+var rightArray = __webpack_require__(22)
+var createInput = __webpack_require__(23)
+
+function fillBoard () {
+    return new Promise (
+        function(resolve, reject) {
+            var board = getCurrBoard()
+            var nodeArray = getColumnsNodes(board)
+            for (i=0; i<nodeArray.length; i++) {
+                var dummyArray = [];
+                for(j=0; j<nodeArray[i].length; j++){
+                    // console.log(rightArray[i][j] === 0)
+                    if (rightArray[i][j] === 0) {
+                        createInput(nodeArray[i][j])
+                    }
+                    else {
+                        nodeArray[i][j].textContent = rightArray[i][j]
+                    }
+                }
+            }
+            resolve(true)
+        })
+}
+
+module.exports = fillBoard;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+module.exports = [
+    [4,3,5,2,6,0,7,8,1],
+    [6,8,2,5,7,1,4,0,3],
+    [1,0,7,8,3,4,5,6,2],
+    [8,2,6,1,0,5,3,4,7],
+    [3,7,4,6,8,2,0,1,5],
+    [0,5,1,7,4,3,6,2,8],
+    [5,1,0,3,2,6,8,7,4],
+    [2,4,8,0,5,7,1,3,6],
+    [7,6,3,4,1,8,2,5,0],
+]
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
+function createInput (nodeLocation) {
+    nodeLocation.textContent = ""
+    var newNode = document.createElement("input");
+    newNode.className = "numberInput cell"
+    newNode.type = "text"
+    nodeLocation.appendChild(newNode)
+    return
+}
+
+module.exports = createInput;
 
 /***/ })
 /******/ ]);
