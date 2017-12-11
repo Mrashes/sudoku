@@ -8,8 +8,10 @@ function solve () {
     var board = getCurrBoard()
     var nodes = getAllNodes(board);
     var mapping = nodes.map(nodeArray => {
+        //type is [column, row, square]
+        var type = nodes.indexOf(nodeArray)
         var textArray = getText(nodeArray)
-        return extractArrays(textArray).then(result => {
+        return extractArrays(textArray, type).then(result => {
             return result
         })
     })

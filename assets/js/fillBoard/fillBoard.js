@@ -8,9 +8,9 @@ function fillBoard () {
         function(resolve, reject) {
             var board = getCurrBoard()
             var nodeArray = getColumnsNodes(board)
-            for (i=0; i<nodeArray.length; i++) {
+            for (var i=0; i<nodeArray.length; i++) {
                 var dummyArray = [];
-                for(j=0; j<nodeArray[i].length; j++){
+                for(var j=0; j<nodeArray[i].length; j++){
                     // console.log(rightArray[i][j] === 0)
                     if (rightArray[i][j] === 0) {
                         createInput(nodeArray[i][j])

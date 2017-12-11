@@ -1,6 +1,6 @@
 function createSquareArray (board) {
     var array = []
-    for (i=0; i<board.length; i++){
+    for (var i=0; i<board.length; i++){
         array.push(board[i].children)
     }
     return(array)

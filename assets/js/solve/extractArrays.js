@@ -1,18 +1,19 @@
-var bubbleSort = require("./bubbleSort.js")
+// var bubbleSort = require("./bubbleSort.js")
 var solveArray = require("./solveArray.js")
+var redLetters = require("./redLetters.js")
 
-function extractArrays (list) {
+function extractArrays (list, type) {
     return new Promise (
         function(resolve, reject) {
             var promises = list.map(array => {
-                return bubbleSort(array).then(result => {
-                    // console.log(result)
-                    return solveArray(result);
-                })
-
+                //index indicates which of the columns/row/squares its in
+                var index = list.indexOf(array)
+                return solveArray(array, type, index);
             })
             Promise.all(promises).then(function(results) {
-                resolve(!results.includes(false))
+                var filteredResults = results.filter(wrong => wrong.length !== 0);
+                var trueFalse = redLetters(filteredResults)
+                resolve(trueFalse)
             })
         })
 }

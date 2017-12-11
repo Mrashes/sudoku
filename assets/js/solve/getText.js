@@ -2,9 +2,9 @@
 
 function getText (nodeArray) {
     var textArray = []
-    for (i=0; i<nodeArray.length; i++) {
+    for (var i=0; i<nodeArray.length; i++) {
         var dummyArray = [];
-        for(j=0; j<nodeArray[i].length; j++){
+        for(var j=0; j<nodeArray[i].length; j++){
             if (nodeArray[i][j].children.length){
                 dummyArray.push(nodeArray[i][j].children[0].value)
             }
